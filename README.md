@@ -1,173 +1,162 @@
-# TailAdmin Next.js - Free Next.js Tailwind Admin Dashboard Template
+# 📘 Guía de Uso – Delivery App (Web)
 
-TailAdmin is a free and open-source admin dashboard template built on **Next.js and Tailwind CSS** providing developers with everything they need to create a feature-rich and data-driven: back-end, dashboard, or admin panel solution for any sort of web project.
+Esta guía explica, paso a paso, **cómo usar** la app web de delivery en su modo actual (UI/Front con datos en localStorage).  
+Si buscas cómo **instalar y levantar** el proyecto, revisa el README técnico del repo (instalación, scripts y build).
 
-![TailAdmin - Next.js Dashboard Preview](./banner.png)
+---
 
-With TailAdmin Next.js, you get access to all the necessary dashboard UI components, elements, and pages required to build a high-quality and complete dashboard or admin panel. Whether you're building a dashboard or admin panel for a complex web application or a simple website. 
+## 🚪 1) Acceso y autenticación
 
-TailAdmin utilizes the powerful features of **Next.js 15** and common features of Next.js such as server-side rendering (SSR), static site generation (SSG), and seamless API route integration. Combined with the advancements of **React 19** and the robustness of **TypeScript**, TailAdmin is the perfect solution to help get your project up and running quickly.
+1. Abre `http://localhost:3000`.
+2. Usa el menú lateral para ir a:
+   - **/signin** → Iniciar sesión (demo, sin backend).
+   - **/signup** → Crear cuenta (demo, sin backend).
+3. El formulario valida lo básico (campos obligatorios).  
+   > En esta versión los formularios son de **diseño**. La autenticación real se integra cuando conectes el backend.
 
-## Overview
+---
 
-TailAdmin provides essential UI components and layouts for building feature-rich, data-driven admin dashboards and control panels. It's built on:
+## 🧭 2) Navegación general
 
-- Next.js 15.x
-- React 19
-- TypeScript
-- Tailwind CSS V4
+- La **barra lateral** contiene las secciones principales:
+  - **Panel** (Dashboard)
+  - **Pedidos** → Nuevos / Programados / Historial
+  - **Productos** → Listado / Nuevo / Categorías / Combos
+  - **Inventario**
+  - **Clientes**
+  - **Repartidores** → Listado / Asignaciones / Rendimiento
+  - **Marketing** → Promociones / Cupones
+  - **Reportes** → Ventas / Entregas
+  - **Configuración** → Negocio / App / Roles / Pagos
+- Si no ves el final del menú, asegúrate de que haga scroll:
+  - La envoltura del menú usa `overflow-y-auto` (ya aplicado).
 
-### Quick Links
-- [✨ Visit Website](https://tailadmin.com)
-- [📄 Documentation](https://tailadmin.com/docs)
-- [⬇️ Download](https://tailadmin.com/download)
-- [🖌️ Figma Design File (Community Edition)](https://www .figma.com/community/file/1463141366275764364)
-- [⚡ Get PRO Version](https://tailadmin.com/pricing)
+---
 
-### Demos
-- [Free Version](https://nextjs-free-demo.tailadmin.com)
-- [Pro Version](https://nextjs-demo.tailadmin.com)
+## 🛍️ 3) Productos (crear, listar, editar, eliminar)
 
-### Other Versions
-- [HTML Version](https://github.com/TailAdmin/tailadmin-free-tailwind-dashboard-template)
-- [React Version](https://github.com/TailAdmin/free-react-tailwind-admin-dashboard)
-- [Vue.js Version](https://github.com/TailAdmin/vue-tailwind-admin-dashboard)
+### A) Crear producto
+1. Ve a **Productos → Nuevo** (`/products/nuevo`).
+2. Completa:
+   - **Nombre** y **Precio** (obligatorio).
+   - **Descripción**, **Stock**, **Categoría**.
+   - **Etiquetas** (vegano, oferta, etc.) tocándolas para activarlas.
+   - **Variantes** (ej.: Tamaño Doble, +$) → “+ Añadir”.
+   - **Extras** (ej.: Queso, Tocineta, etc.) → “+ Añadir”.
+   - **Imagen** → botón *Subir imagen* (DataURL guardada en localStorage).
+   - **Disponibilidad** → “Disponible” ON/OFF.
+3. Pulsa **“Crear producto”**.
+4. El producto se guarda en tu navegador (localStorage) y aparece en la lista/inventario.
 
-## Installation
+> 💾 Todo queda en **localStorage** (clave `delivery_products_v1`). Borrar caché o “Limpiar” puede vaciar tu catálogo.
 
-### Prerequisites
-To get started with TailAdmin, ensure you have the following prerequisites installed and set up:
+### B) Listado de productos
+1. Ve a **Productos → Listado** (`/products`).
+2. Verás tarjetas con:
+   - Imagen, nombre, precio, categoría.
+   - Stock y disponibilidad.
+   - Etiquetas visibles sobre la imagen.
+3. Acciones por producto:
+   - **Editar** → precarga el formulario de “Nuevo” con los datos.
+   - **Eliminar** → quita el producto del localStorage.
 
-- Node.js 18.x or later (recommended to use Node.js 20.x or later)
+### C) Edición de producto
+1. En **Listado** pulsa **Editar** sobre la tarjeta.
+2. Se abre **Productos → Nuevo** con el formulario lleno.
+3. Cambia los campos y pulsa **Guardar cambios**.
 
-### Cloning the Repository
-Clone the repository using the following command:
+---
 
-```bash
-git clone https://github.com/TailAdmin/free-nextjs-admin-dashboard.git
-```
+## 📦 4) Paquetes vs Unidades (venta por tipo)
 
-> Windows Users: place the repository near the root of your drive if you face issues while cloning.
+> Si tu formulario incluye selector **“Tipo de venta: Unidad / Paquete”**:
+1. En **Productos → Nuevo**, elige:
+   - **Unidad**: el precio es por unidad.
+   - **Paquete**: define *contenido del paquete* y *precio total*.
+2. Guarda. En Listado se refleja el tipo (ej. “x6 unidades”).
 
-1. Install dependencies:
-    ```bash
-    npm install
-    # or
-    yarn install
-    ```
-    > Use `--legacy-peer-deps` flag if you face peer-dependency error during installation.
+> Si aún no lo ves, revisa el componente de creación: algunos diseños incluyen `unitPackage` (unidad/paquete). Si no, mantenlo en “Unidad”.
 
-2. Start the development server:
-    ```bash
-    npm run dev
-    # or
-    yarn dev
-    ```
+---
 
-## Components
+## 🧾 5) Pedidos
 
-TailAdmin is a pre-designed starting point for building a web-based dashboard using Next.js and Tailwind CSS. The template includes:
+> En modo UI, los pedidos están maquetados y listos para integrarse con tu backend.
 
-- Sophisticated and accessible sidebar
-- Data visualization components
-- Profile management and custom 404 page
-- Tables and Charts(Line and Bar)
-- Authentication forms and input elements
-- Alerts, Dropdowns, Modals, Buttons and more
-- Can't forget Dark Mode 🕶️
+- **Pedidos → Nuevos** (`/orders/new`):  
+  Cola de pedidos recientes a confirmar/asignar.
+- **Pedidos → Programados** (`/orders/scheduled`):  
+  Entregas fijadas para más tarde (fecha/hora).
+- **Pedidos → Historial** (`/orders/history`):  
+  Historial de pedidos completados/cancelados.
 
-All components are built with React and styled using Tailwind CSS for easy customization.
+> **Acciones típicas** (diseño):
+> - Ver detalle del pedido (items, total, cliente).
+> - Cambiar estado: “Confirmado”, “En preparación”, “En ruta”, “Entregado”.
+> - Asignar repartidor.
 
-## Feature Comparison
+---
 
-### Free Version
-- 1 Unique Dashboard
-- 30+ dashboard components
-- 50+ UI elements
-- Basic Figma design files
-- Community support
+## 👥 6) Clientes
 
-### Pro Version
-- 5 Unique Dashboards: Analytics, Ecommerce, Marketing, CRM, Stocks (more coming soon)
-- 400+ dashboard components and UI elements
-- Complete Figma design file
-- Email support
+- **/customers**: listado básico de clientes en modo UI.  
+- Puntos de mejora para backend:
+  - Historial de pedidos por cliente.
+  - Datos de contacto, direcciones guardadas, preferencias.
+  - Segmentación para marketing.
 
-To learn more about pro version features and pricing, visit our [pricing page](https://tailadmin.com/pricing).
+---
 
-## Changelog
+## 🛵 7) Repartidores
 
-### Version 2.0.2 - [March 25, 2025]
+- **Repartidores → Listado** (`/drivers`): ver todos los repartidores (UI).
+- **Asignaciones** (`/drivers/assignments`): asignar pedidos activos.
+- **Rendimiento** (`/drivers/performance`): métricas por repartidor.
 
-- Upgraded to Next v15.2.3 for [CVE-2025-29927](https://nextjs.org/blog/cve-2025-29927) concerns
-- Included overrides vectormap for packages to prevent peer dependency errors during installation.
-- Migrated from react-flatpickr to flatpickr package for React 19 support
+> Acciones de ejemplo:
+> - Asignar pedido.
+> - Ver tiempos promedio.
+> - Cambiar estado (activo/no disponible).
 
-### Version 2.0.1 - [February 27, 2025]
+---
 
-#### Update Overview
+## 🧩 8) Inventario, Categorías y Combos
 
-- Upgraded to Tailwind CSS v4 for better performance and efficiency.
-- Updated class usage to match the latest syntax and features.
-- Replaced deprecated class and optimized styles.
+- **Inventario** (`/inventory`): visión general del stock.
+- **Categorías** (`/products/categorias`): organiza productos por tipo.
+- **Combos** (`/products/combos`): arma combos con varios productos + precio promo.
 
-#### Next Steps
+> Cuando conectes backend:
+> - Las categorías y combos deben persistirse en base de datos.
+> - Relaciona productos con categorías y combos (IDs/refs).
 
-- Run npm install or yarn install to update dependencies.
-- Check for any style changes or compatibility issues.
-- Refer to the Tailwind CSS v4 [Migration Guide](https://tailwindcss.com/docs/upgrade-guide) on this release. if needed.
-- This update keeps the project up to date with the latest Tailwind improvements. 🚀
+---
 
-### v2.0.0 (February 2025)
-A major update focused on Next.js 15 implementation and comprehensive redesign.
+## 🎛️ 9) Configuración
 
-#### Major Improvements
-- Complete redesign using Next.js 15 App Router and React Server Components
-- Enhanced user interface with Next.js-optimized components
-- Improved responsiveness and accessibility
-- New features including collapsible sidebar, chat screens, and calendar
-- Redesigned authentication using Next.js App Router and server actions
-- Updated data visualization using ApexCharts for React
+- **Negocio**: nombre comercial, horarios, cobertura, impuestos.
+- **App**: tema (claro/oscuro), logo, colores base.
+- **Roles**: permisos (admin, operador, cocina, repartidor).
+- **Pagos**: configuración de métodos (Stripe, Mercado Pago, etc.).
 
-#### Breaking Changes
+> En UI ya existen secciones base. Conecta APIs reales para guardar cambios.
 
-- Migrated from Next.js 14 to Next.js 15
-- Chart components now use ApexCharts for React
-- Authentication flow updated to use Server Actions and middleware
+---
 
-[Read more](https://tailadmin.com/docs/update-logs/nextjs) on this release.
+## 🎨 10) Tema (Claro / Oscuro)
 
-#### Breaking Changes
-- Migrated from Next.js 14 to Next.js 15
-- Chart components now use ApexCharts for React
-- Authentication flow updated to use Server Actions and middleware
+- Usa el **toggler** (esquina) para cambiar tema.
+- Se persiste la preferencia (context + localStorage).
 
-### v1.3.4 (July 01, 2024)
-- Fixed JSvectormap rendering issues
+---
 
-### v1.3.3 (June 20, 2024)
-- Fixed build error related to Loader component
+## 🧰 11) Solución de problemas comunes
 
-### v1.3.2 (June 19, 2024)
-- Added ClickOutside component for dropdown menus
-- Refactored sidebar components
-- Updated Jsvectormap package
+- **404 al entrar a una ruta**  
+  Asegúrate de que la ruta exista como carpeta con `page.tsx` dentro.  
+  Ej.: `/app/products/page.tsx`, `/app/products/nuevo/page.tsx`.
 
-### v1.3.1 (Feb 12, 2024)
-- Fixed layout naming consistency
-- Updated styles
-
-### v1.3.0 (Feb 05, 2024)
-- Upgraded to Next.js 14
-- Added Flatpickr integration
-- Improved form elements
-- Enhanced multiselect functionality
-- Added default layout component
-
-## License
-
-TailAdmin Next.js Free Version is released under the MIT License.
-
-## Support
-
-If you find this project helpful, please consider giving it a star on GitHub. Your support helps us continue developing and maintaining this template.
+- **El sidebar no hace scroll**  
+  Verifica que el contenedor tenga:
+  ```html
+  <div className="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar">

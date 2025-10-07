@@ -51,7 +51,7 @@ const navItems: NavItem[] = [
       { name: "Nuevo producto", path: "/products/nuevo", pro: false },
       { name: "Categorías", path: "/products/categorias", pro: false },
       { name: "Combos", path: "/products/combos", pro: false },
-      { name: "Inventario", path: "products/inventario", pro: false },
+      { name: "Inventario", path: "/products/inventario", pro: false },
     ],
   },
 
@@ -115,35 +115,54 @@ const othersItems: NavItem[] = [
       { name: "Liquidaciones", path: "/payments/settlements", pro: false },
     ],
   },
+{
+  icon: <PlugInIcon />,
+  name: "Configuración",
+  subItems: [
+    { name: "General", path: "/settings", pro: false },
+    { name: "Perfil del negocio", path: "/settings/business", pro: false },
+    { name: "Sucursales & horarios", path: "/settings/locations", pro: false },
+    { name: "Zonas de entrega", path: "/zones", pro: false }, // ya tienes /zones
+    { name: "Tarifas & comisiones", path: "/settings/fees", pro: false },
+    { name: "Impuestos", path: "/settings/taxes", pro: false },
+    { name: "Pagos & pasarelas", path: "/settings/payments", pro: false },
+    { name: "Entrega & logística", path: "/settings/logistics", pro: false },
+    { name: "Notificaciones", path: "/settings/notifications", pro: false },
+    { name: "Integraciones", path: "/settings/integrations", pro: false },
+    { name: "Impresoras & recibos", path: "/settings/printers", pro: false },
+    { name: "Usuarios & roles", path: "/settings/roles", pro: false },
+    { name: "Seguridad", path: "/settings/security", pro: false },
+    { name: "Términos y Condiciones", path: "/legal/terms", pro: false },
+    { name: "Privacidad", path: "/legal/privacy", pro: false },
+    { name: "Cookies", path: "/legal/cookies", pro: false },
+    { name: "Soporte & ayuda", path: "/support", pro: false },
+  ],
+},
+
+{
+  icon: <PageIcon />,
+  name: "Ayuda",
+  subItems: [
+    { name: "Preguntas frecuentes", path: "/help/faq", pro: false },
+    { name: "Guías rápidas", path: "/help/guides", pro: false },
+    { name: "Reportar un problema", path: "/help/report", pro: false },
+    { name: "Centro de ayuda", path: "/help", pro: false },
+    { name: "Estado del sistema", path: "/status", pro: false },
+    { name: "Contacto", path: "/help/contact", pro: false },
+  ],
+},
+
   {
     icon: <PlugInIcon />,
-    name: "Configuración",
-    subItems: [
-      { name: "General", path: "/settings", pro: false },
-      { name: "Negocio", path: "/settings/business", pro: false },
-      { name: "Impuestos", path: "/settings/taxes", pro: false },
-      { name: "Integraciones", path: "/settings/integrations", pro: false },
-      { name: "Notificaciones", path: "/settings/notifications", pro: false },
-      { name: "Usuarios & Roles", path: "/settings/roles", pro: false },
-    ],
-  },
-  {
-    icon: <PageIcon />,
-    name: "Ayuda",
-    subItems: [
-      { name: "Soporte", path: "/help/support", pro: false },
-      { name: "Centro de ayuda", path: "/help", pro: false },
-      { name: "Estado del sistema", path: "/status", pro: false },
-    ],
-  },
-  {
-    icon: <PlugInIcon />,
-    name: "Autenticación",
-    subItems: [
-      { name: "Iniciar sesión", path: "/signin", pro: false },
-      { name: "Registrarse", path: "/signup", pro: false },
-    ],
-  },
+    name: "Sobre nosotros",
+  subItems: [
+    { name: "Sobre nosotros",      path: "/about",         pro: false },
+    { name: "Sobre la aplicación", path: "/about/app",     pro: false },
+    { name: "Información general", path: "/about/info",    pro: false },
+    { name: "Nuestro equipo",      path: "/about/team",    pro: false },
+    { name: "Misión y visión",     path: "/about/mission", pro: false },
+  ],
+}
 ];
 
 const AppSidebar: React.FC = () => {
