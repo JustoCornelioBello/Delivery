@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1000" viewBox="0 0 1400 1000">
+  <defs>
+    <linearGradient id="purpleGlow" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#8e5bff" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#6a35ff" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="redBody" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ff3b30"/>
+      <stop offset="100%" stop-color="#d6251e"/>
+    </linearGradient>
+    <linearGradient id="boxGrad" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ffb84d"/>
+      <stop offset="100%" stop-color="#ffa21a"/>
+    </linearGradient>
+    <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+    <filter id="groundBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+
+  <!-- GROUP: mascot+vehicle -->
+  <g id="logo-mark" transform="translate(210,120)" filter="url(#softShadow)">
+    <!-- rear parcel box -->
+    <g id="box" transform="translate(655,210)">
+      <rect x="0" y="0" rx="22" ry="22" width="180" height="140" fill="url(#boxGrad)" stroke="#a35d00" stroke-width="8"/>
+      <path d="M0 58 H180" stroke="#d17d08" stroke-width="8"/>
+      <path d="M90 0 V140" stroke="#d17d08" stroke-width="8"/>
+    </g>
+
+    <!-- scooter body -->
+    <g id="scooter" transform="translate(120,360)">
+      <path d="M190 60 C120 60, 70 110, 60 170 C50 230, 90 260, 160 260 H520
+               C590 260, 640 210, 650 160 C665 75, 620 40, 560 40 L410 40 L390 10
+               C380 -5, 355 -5, 345 10 L325 40 H290
+               C240 40, 220 55, 190 60 Z"
+            fill="url(#redBody)" stroke="#7a0b08" stroke-width="10"/>
+      <!-- headlight -->
+      <circle cx="620" cy="130" r="26" fill="#ffe8a6" stroke="#e0b94f" stroke-width="8"/>
+      <rect x="585" y="120" width="25" height="14" fill="#ffd77a" transform="skewX(-15)"/>
+      <!-- deck -->
+      <rect x="250" y="180" rx="8" ry="8" width="160" height="20" fill="#2a2a2a"/>
+      <!-- exhaust/trim -->
+      <path d="M520 200 C560 200, 590 210, 610 230" stroke="#9c1310" stroke-width="10" fill="none"/>
+      <!-- wheels -->
+      <g id="rearWheel" transform="translate(160,260)">
+        <circle cx="0" cy="0" r="86" fill="#1c1c1c"/>
+        <circle cx="0" cy="0" r="58" fill="#444"/>
+        <circle cx="0" cy="0" r="22" fill="#999"/>
+      </g>
+      <g id="frontWheel" transform="translate(520,260)">
+        <circle cx="0" cy="0" r="86" fill="#1c1c1c"/>
+        <circle cx="0" cy="0" r="58" fill="#444"/>
+        <circle cx="0" cy="0" r="22" fill="#999"/>
+      </g>
+      <!-- ground shadow -->
+      <ellipse cx="340" cy="308" rx="340" ry="26" fill="#000" opacity="0.25" filter="url(#groundBlur)"/>
+    </g>
+
+    <!-- driver (character) -->
+    <g id="rider" transform="translate(340,120)">
+      <!-- back arm -->
+      <path d="M140 230 c20 10 40 10 66 0 c10 -4 20 4 20 14 c0 14 -12 24 -24 22
+               c-34 -6 -58 -12 -80 -26 c-12 -8 -10 -30 18 -28 z"
+            fill="#f0c49a" stroke="#b77c55" stroke-width="6"/>
+      <!-- torso -->
+      <path d="M80 260 C70 190, 120 150, 190 150 C250 150, 290 180, 300 230
+               C306 262, 296 296, 280 310 C250 336, 170 330, 120 318 Z"
+            fill="url(#purpleGlow)" stroke="#3d1db4" stroke-width="10"/>
+      <!-- pants -->
+      <path d="M110 314 C120 356, 130 388, 132 420 C134 452, 110 468, 92 470
+               C72 472, 56 458, 56 438 C56 408, 70 370, 84 322 Z
+               M240 316 C260 352, 280 380, 292 410 C302 436, 292 458, 270 462
+               C252 466, 232 452, 226 430 C218 402, 210 370, 204 328 Z"
+            fill="#2b2b2b"/>
+      <!-- hands -->
+      <circle cx="70" cy="260" r="18" fill="#f0c49a" stroke="#b77c55" stroke-width="6"/>
+      <circle cx="320" cy="250" r="18" fill="#f0c49a" stroke="#b77c55" stroke-width="6"/>
+      <!-- neck -->
+      <rect x="188" y="170" width="28" height="26" rx="6" fill="#f0c49a" stroke="#b77c55" stroke-width="6"/>
+      <!-- head -->
+      <g id="head" transform="translate(140,60)">
+        <ellipse cx="74" cy="68" rx="74" ry="70" fill="#f6d1ad" stroke="#b77c55" stroke-width="8"/>
+        <!-- hair/ear -->
+        <path d="M10 64 C12 36, 36 20, 74 20 C118 20, 146 46, 148 74
+                 C118 64, 96 62, 70 64 Z" fill="#252525"/>
+        <circle cx="10" cy="70" r="10" fill="#f0c49a" stroke="#b77c55" stroke-width="6"/>
+        <!-- face -->
+        <circle cx="58" cy="72" r="6" fill="#252525"/>
+        <circle cx="98" cy="72" r="6" fill="#252525"/>
+        <path d="M56 92 Q74 108 100 92" stroke="#252525" stroke-width="8" fill="none" stroke-linecap="round"/>
+      </g>
+      <!-- helmet -->
+      <g transform="translate(128,32)">
+        <path d="M24 62 C24 14, 86 -6, 140 6 C196 18, 226 56, 226 84 L226 90
+                 C173 90, 120 100, 68 114 C50 92, 34 84, 24 62 Z"
+              fill="url(#purpleGlow)" stroke="#3d1db4" stroke-width="10"/>
+        <rect x="24" y="90" width="204" height="22" rx="10" fill="#3d1db4"/>
+      </g>
+      <!-- handlebar -->
+      <rect x="30" y="240" width="300" height="16" rx="8" fill="#2b2b2b"/>
+    </g>
+
+    <!-- motion lines -->
+    <g id="motion" transform="translate(40,520)" stroke="#2b2b2b" stroke-width="14" stroke-linecap="round">
+      <line x1="0" y1="0" x2="70" y2="0"/>
+      <line x1="0" y1="40" x2="100" y2="40"/>
+      <line x1="0" y1="80" x2="60" y2="80"/>
+    </g>
+  </g>
+
+  <!-- WORDMARK -->
+  <g id="wordmark" transform="translate(150,860)">
+    <text x="0" y="0" font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto"
+          font-size="160" font-weight="900" fill="url(#purpleGlow)" letter-spacing="4"
+          style="paint-order: stroke; stroke: #2f168f; stroke-width: 8;">
+      DELIVERY
+    </text>
+    <text x="6" y="4" font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto"
+          font-size="44" font-weight="600" fill="#272727">
+      rápido • seguro • sabroso
+    </text>
+  </g>
+</svg>
