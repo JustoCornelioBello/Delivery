@@ -1,10 +1,15 @@
-"use client";
+import HistoryOrders from "@/components/orders/HistoryOrders";
 
-export default function OrdersHistoryPage() {
+
+
+export default function History() {
   return (
-    <div className="p-6">
-      <h1 className="text-xl font-semibold">Historial de pedidos</h1>
-      <p className="mt-2 text-gray-600">Aquí puedes ver el historial completo de pedidos.</p>
+    <div>
+      
+     
+      <div className="space-y-6">
+          <HistoryOrders />
+      </div>
     </div>
   );
 }

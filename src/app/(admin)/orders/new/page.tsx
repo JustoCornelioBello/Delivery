@@ -1,10 +1,13 @@
-"use client";
+import NewOrders from "@/components/orders/NewOrders";
 
-export default function NewOrdersPage() {
+export default function Page() {
   return (
-    <div className="p-6">
-      <h1 className="text-xl font-semibold">Pedidos nuevos</h1>
-      <p className="mt-2 text-gray-600">Aquí se muestran los pedidos que acaban de entrar.</p>
+    <div>
+      
+     
+      <div className="space-y-6">
+          <NewOrders />
+      </div>
     </div>
   );
 }
