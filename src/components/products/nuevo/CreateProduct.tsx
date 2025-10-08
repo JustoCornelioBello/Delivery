@@ -174,34 +174,7 @@ export default function AdminProductosPage() {
     resetForm();
   };
 
-  /* ---------- Editar / Eliminar ---------- */
-  const onEdit = (id: string) => {
-    const prod = products.find((p) => p.id === id);
-    if (!prod) return;
-    setEditingId(prod.id);
-    setName(prod.name);
-    setDescription(prod.description || "");
-    setPrice(String(prod.price));
-    setCategory(prod.category);
-    setStock(
-      typeof prod.stock === "number" && !isNaN(prod.stock)
-        ? String(prod.stock)
-        : ""
-    );
-    setIsAvailable(!!prod.isAvailable);
-    setTags(prod.tags || []);
-    setImage(prod.image);
-    setVariants((prod.variants || []).map((v) => ({ ...v, id: uid() })));
-    setExtras((prod.extras || []).map((x) => ({ ...x, id: uid() })));
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const onDelete = (id: string) => {
-    if (!confirm("¿Eliminar este producto?")) return;
-    setProducts((prev) => prev.filter((p) => p.id !== id));
-    if (editingId === id) resetForm();
-  };
-
+  
   /* ---------- Totales (ejemplo rápido de cálculo previo) ---------- */
   const avgPrice = useMemo(
     () =>
@@ -217,12 +190,8 @@ export default function AdminProductosPage() {
       {/* Header */}
       <header className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
-            {editingId ? "Editar producto" : "Crear nuevo producto"}
-          </h1>
-          <p className="text-gray-500">
-            Administra tu catálogo. (Diseño, sin backend)
-          </p>
+        
+        
         </div>
         <div className="flex items-center gap-3 text-sm">
           <span className="rounded-full bg-gray-100 px-3 py-1 dark:bg-gray-800">
@@ -518,98 +487,7 @@ export default function AdminProductosPage() {
       </section>
 
       {/* Listado */}
-      <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-        <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-lg font-semibold">Inventario</h3>
-          <span className="text-sm text-gray-500">
-            {products.length} producto(s)
-          </span>
-        </div>
-
-        {products.length === 0 ? (
-          <p className="text-sm text-gray-500">Aún no has creado productos.</p>
-        ) : (
-          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {products.map((p) => (
-              <li
-                key={p.id}
-                className="group overflow-hidden rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900"
-              >
-                <div className="relative h-40 w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
-                  {p.image ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      alt={p.name}
-                      src={p.image}
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center text-sm text-gray-400">
-                      Sin imagen
-                    </div>
-                  )}
-                  {p.tags?.length ? (
-                    <div className="absolute left-2 top-2 flex flex-wrap gap-1">
-                      {p.tags.map((t) => (
-                        <span
-                          key={t}
-                          className="rounded-full bg-black/60 px-2 py-0.5 text-[10px] text-white"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  ) : null}
-                </div>
-
-                <div className="space-y-2 p-4">
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <h4 className="line-clamp-1 font-medium">{p.name}</h4>
-                      <p className="line-clamp-2 text-xs text-gray-500">
-                        {p.description || "—"}
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <p className="font-semibold">{money(p.price)}</p>
-                      <p className="text-xs text-gray-500">{p.category}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between text-xs text-gray-500">
-                    <span>Stock: {typeof p.stock === "number" ? p.stock : "—"}</span>
-                    <span
-                      className={[
-                        "rounded-full px-2 py-0.5",
-                        p.isAvailable
-                          ? "bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-300"
-                          : "bg-red-100 text-red-700 dark:bg-red-900/20 dark:text-red-300",
-                      ].join(" ")}
-                    >
-                      {p.isAvailable ? "Disponible" : "No disponible"}
-                    </span>
-                  </div>
-
-                  <div className="flex items-center justify-end gap-2 pt-2">
-                    <button
-                      className="rounded-lg border border-gray-300 px-3 py-1.5 text-xs hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800"
-                      onClick={() => onEdit(p.id)}
-                    >
-                      Editar
-                    </button>
-                    <button
-                      className="rounded-lg bg-red-50 px-3 py-1.5 text-xs text-red-600 hover:bg-red-100 dark:bg-red-900/20 dark:text-red-300"
-                      onClick={() => onDelete(p.id)}
-                    >
-                      Eliminar
-                    </button>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
+     
     </div>
   );
 }
