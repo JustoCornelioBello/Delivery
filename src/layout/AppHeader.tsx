@@ -114,14 +114,12 @@ const AppHeader: React.FC = () => {
               <input
                 ref={inputRef}
                 type="text"
-                placeholder="Search or type command..."
+                placeholder="Que Buscas...?"
                 aria-label="Buscar"
                 className="h-11 w-full rounded-lg border border-gray-200 bg-white/70 pl-12 pr-16 text-sm text-gray-800 shadow-sm placeholder:text-gray-400 focus:border-brand-300 focus:outline-none focus:ring-4 focus:ring-brand-500/10 dark:border-gray-800 dark:bg-white/5 dark:text-white"
               />
               {/* Hint ⌘K */}
-              <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 select-none text-xs text-gray-400 dark:text-gray-500">
-                ⌘K
-              </span>
+             
             </form>
           </div>
         </div>
