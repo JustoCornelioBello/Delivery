@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useSidebar } from "../context/SidebarContext";
+import { useSidebar } from "../../context/SidebarContext";
 import {
   BoxCubeIcon,
   CalenderIcon,
@@ -16,7 +16,7 @@ import {
   TableIcon,
   UserCircleIcon,
   Productos,
-} from "../icons/index";
+} from "../../icons/index";
 
 // -------------------- Tipos --------------------
 type SubItem = { name: string; path: string; pro?: boolean; new?: boolean };

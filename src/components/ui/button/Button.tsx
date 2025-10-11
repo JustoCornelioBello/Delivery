@@ -3,7 +3,7 @@ import { forwardRef, type ComponentProps } from "react";
 import { cls } from "@/lib/utils";
 
 export type ButtonProps = ComponentProps<"button"> & {
-  variant?: "primary" | "secondary" | "ghost" | "danger";
+  variant?: "primary" | "secondary" | "ghost" | "danger" | "outline";
 };
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(

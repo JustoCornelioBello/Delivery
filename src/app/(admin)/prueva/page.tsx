@@ -1,4 +1,4 @@
-import Prueva from "@/app/(admin)/(ui-elements)/videos/page";
+import Prueva from "@/app/(admin)/search/page";
 
 export default function Page() {
   return (
